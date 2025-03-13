@@ -3,7 +3,9 @@ package com.kaikaku.stacks.controller;
 import com.kaikaku.stacks.dto.company.CompanyDto;
 import com.kaikaku.stacks.dto.company.TechStackDto;
 import com.kaikaku.stacks.dto.company.TechnologyDto;
+import com.kaikaku.stacks.service.company.CompanyService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,30 +20,14 @@ import java.util.ArrayList;
 @Validated
 public class CompanyController {
 
+    @Autowired
+    CompanyService companyService;
+
     @GetMapping
     @ResponseBody
     public ArrayList<CompanyDto> getMain() {
-        log.info("execute!");
-        return createData();
+        ArrayList<CompanyDto> company = companyService.getCompany();
+        return company;
     }
 
-    //@todo Data Sample
-    static ArrayList<CompanyDto> createData() {
-        ArrayList<CompanyDto> companyDtos = new ArrayList<>();
-        for (int i = 0; i < 2; i++) {
-            ArrayList<TechStackDto> techStackDtos = new ArrayList<>();
-            for (int j = 0; j < 2; j++) {
-                ArrayList<TechnologyDto> technologyDtos = new ArrayList<>();
-                for (int k = 0; k < 2; k++) {
-                    TechnologyDto technologyDto = new TechnologyDto(k, "technologyDto" + k, "category" + k);
-                    technologyDtos.add(technologyDto);
-                }
-                TechStackDto techStackDto = new TechStackDto(j, "techStackDto" + j, technologyDtos);
-                techStackDtos.add(techStackDto);
-            }
-            CompanyDto companyDto = new CompanyDto(i, "companyDto" + i, "industry", "companyUrl", "careerUrl", techStackDtos);
-            companyDtos.add(companyDto);
-        }
-        return companyDtos;
-    }
 }
