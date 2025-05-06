@@ -1,9 +1,9 @@
 package com.kaikaku.stacks.repository.company;
 
 
-import com.kaikaku.stacks.entity.company.Stacks;
+import com.kaikaku.stacks.entity.company.Stack;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface StacksRepository extends JpaRepository<Stacks,Integer> {
+public interface StacksRepository extends JpaRepository<Stack,Integer> {
 
 }
