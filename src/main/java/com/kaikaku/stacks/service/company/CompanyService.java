@@ -43,7 +43,7 @@ public class CompanyService {
         return allStacks;
     }
 
-    public String  addCompany(BasicInfoForm dto, List<Integer> stacks, MultipartFile logoFile) {
+    public String addCompany(BasicInfoForm dto, List<Integer> stacks, MultipartFile logoFile) {
         Company company = new Company();
         company.setName(dto.getCompanyName());
         company.setNameEn(dto.getCompanyNameEn());
@@ -77,6 +77,10 @@ public class CompanyService {
         company.setCompanyStacks(addedStack);
         companyRepository.save(company);
         return "OK";
+    }
+
+    public void getAllCompanies() {
+
     }
 
 }

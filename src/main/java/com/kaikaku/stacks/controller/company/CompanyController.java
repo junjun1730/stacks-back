@@ -31,4 +31,10 @@ public class CompanyController {
         String result = companyService.addCompany(basicInfo,stacks,logoFile);
         return ResponseEntity.ok(result);
     }
+
+    @GetMapping("/list")
+    public ResponseEntity<String> addCompany(){
+        companyService.getAllCompanies();
+        return ResponseEntity.ok("");
+    }
 }
