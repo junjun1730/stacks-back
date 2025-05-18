@@ -79,8 +79,9 @@ public class CompanyService {
         return "OK";
     }
 
-    public void getAllCompanies() {
-
+    public List<Company> getAllCompanies() {
+        List<Company> allComapny = companyRepository.findAllWithStacksAndIndustry();
+        return allComapny;
     }
 
 }

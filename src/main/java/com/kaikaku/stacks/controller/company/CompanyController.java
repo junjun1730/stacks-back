@@ -1,6 +1,7 @@
 package com.kaikaku.stacks.controller.company;
 
 import com.kaikaku.stacks.dto.company.BasicInfoForm;
+import com.kaikaku.stacks.entity.company.Company;
 import com.kaikaku.stacks.entity.company.Stack;
 import com.kaikaku.stacks.service.company.CompanyService;
 import lombok.RequiredArgsConstructor;
@@ -33,8 +34,8 @@ public class CompanyController {
     }
 
     @GetMapping("/list")
-    public ResponseEntity<String> addCompany(){
-        companyService.getAllCompanies();
-        return ResponseEntity.ok("");
+    public ResponseEntity<List<Company>> addCompany(){
+        List<Company> allCompanies = companyService.getAllCompanies();
+        return ResponseEntity.ok(allCompanies);
     }
 }

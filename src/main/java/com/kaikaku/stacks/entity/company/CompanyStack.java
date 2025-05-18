@@ -18,4 +18,12 @@ public class CompanyStack {
     @ManyToOne
     @JoinColumn(name = "techstack_id", nullable = false, foreignKey = @ForeignKey(name = "fk_techstack"))
     private Stack techstack;
+
+    @Override
+    public String toString() {
+        return "CompanyStack{" +
+                "company=" + company +
+                ", techstack=" + techstack +
+                '}';
+    }
 }
