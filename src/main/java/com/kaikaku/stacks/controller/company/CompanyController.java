@@ -1,6 +1,7 @@
 package com.kaikaku.stacks.controller.company;
 
-import com.kaikaku.stacks.dto.company.BasicInfoForm;
+import com.kaikaku.stacks.dto.company.AddCompanyRequestDto;
+import com.kaikaku.stacks.dto.company.GetCompanyResponseDto;
 import com.kaikaku.stacks.entity.company.Company;
 import com.kaikaku.stacks.entity.company.Stack;
 import com.kaikaku.stacks.service.company.CompanyService;
@@ -19,23 +20,23 @@ import java.util.List;
 public class CompanyController {
 
     private final CompanyService companyService;
+
     @GetMapping("/add")
-    public ResponseEntity<List<Stack>> getAllStacks(){
+    public ResponseEntity<List<Stack>> getAllStacks() {
         List<Stack> allStacks = companyService.findAllStacks();
         return ResponseEntity.ok(allStacks);
     }
 
     @PostMapping("/add")
-    public ResponseEntity<String> addCompany(@RequestPart("basicInfo") BasicInfoForm basicInfo,
-                                                  @RequestPart("stacks") List<Integer> stacks,
-                                                  @RequestPart("logo") MultipartFile logoFile){
-        String result = companyService.addCompany(basicInfo,stacks,logoFile);
+    public ResponseEntity<String> addCompany(@RequestPart("basicInfo") AddCompanyRequestDto addCompanyRequestDto,
+                                             @RequestPart("logo") MultipartFile logoFile) {
+        String result = companyService.addCompany(addCompanyRequestDto, logoFile);
         return ResponseEntity.ok(result);
     }
 
     @GetMapping("/list")
-    public ResponseEntity<List<Company>> addCompany(){
-        List<Company> allCompanies = companyService.getAllCompanies();
+    public ResponseEntity<List<GetCompanyResponseDto>> getAllCompanies() {
+        List<GetCompanyResponseDto> allCompanies = companyService.getAllCompanies();
         return ResponseEntity.ok(allCompanies);
     }
 }

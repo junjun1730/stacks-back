@@ -8,6 +8,11 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 public class AddCompanyRequestDto {
-    private BasicInfoForm basicInfo;
-    private List<Integer> stacks;
+    private String companyName;
+    private String companyNameEn;
+    private String companyNameYomi;
+    private String location;
+    private Integer industry;
+    private String homepage;
+    private List<Integer> selectedStacks;
 }

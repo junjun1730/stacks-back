@@ -3,6 +3,7 @@ package com.kaikaku.stacks.entity.company;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -54,7 +55,6 @@ public class Company {
                 ", image='" + image + '\'' +
                 ", url='" + url + '\'' +
                 ", industry=" + industry +
-                ", companyStacks=" + companyStacks +
                 ", createdAt=" + createdAt +
                 ", updatedAt=" + updatedAt +
                 '}';
