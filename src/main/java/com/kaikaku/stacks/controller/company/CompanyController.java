@@ -21,6 +21,16 @@ public class CompanyController {
 
     private final CompanyService companyService;
 
+
+    @GetMapping("/{id}")
+    public ResponseEntity<GetCompanyResponseDto> getCompany(@PathVariable Integer id){
+        GetCompanyResponseDto company = companyService.getCompany(id);
+        return ResponseEntity.ok(company);
+
+    }
+
+
+
     @GetMapping("/add")
     public ResponseEntity<List<Stack>> getAllStacks() {
         List<Stack> allStacks = companyService.findAllStacks();

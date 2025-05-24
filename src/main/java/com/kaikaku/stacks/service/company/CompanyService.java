@@ -6,6 +6,7 @@ import com.kaikaku.stacks.entity.company.Company;
 import com.kaikaku.stacks.entity.company.CompanyStack;
 import com.kaikaku.stacks.entity.company.Industry;
 import com.kaikaku.stacks.entity.company.Stack;
+import com.kaikaku.stacks.exception.company.CompanyNotFoundException;
 import com.kaikaku.stacks.exception.company.StacksNotFoundException;
 import com.kaikaku.stacks.mapper.company.CompanyMapper;
 import com.kaikaku.stacks.repository.company.CompanyRepository;
@@ -22,6 +23,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -94,4 +96,10 @@ public class CompanyService {
         return getCompanyResponseDtos;
     }
 
+    public GetCompanyResponseDto getCompany(Integer id){
+        Company company = companyRepository.findById(id)
+                .orElseThrow(() -> new CompanyNotFoundException("存在しない会社です: id=" + id));
+        GetCompanyResponseDto getCompanyResponseDto = CompanyMapper.toDto(company);
+        return getCompanyResponseDto;
+    }
 }

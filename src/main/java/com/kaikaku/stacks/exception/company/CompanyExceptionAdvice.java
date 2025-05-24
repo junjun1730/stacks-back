@@ -14,5 +14,10 @@ public class CompanyExceptionAdvice {
     public ResponseEntity<String> HandleStacksNotFound(StacksNotFoundException ex) {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
     }
+
+    @ExceptionHandler(CompanyNotFoundException.class)
+    public ResponseEntity<String> HandleStacksNotFound(CompanyNotFoundException ex) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
+    }
 }
 
